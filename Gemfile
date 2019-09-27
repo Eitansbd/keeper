@@ -26,6 +26,7 @@ gem 'jbuilder', '2.4.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7
 gem 'bootstrap-sass', '3.3.6'
+gem 'bcrypt', '3.1.11'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
