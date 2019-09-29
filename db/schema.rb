@@ -12,18 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20190927135320) do
 
-  create_table "microposts", force: :cascade do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.text     "name"
     t.text     "email"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "password__digest"
     t.string   "password_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
   end

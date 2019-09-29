@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   
   # doing this creates root_path and root_url variables
   root 'static_pages#home'
+  
+  resources :users
 end
