@@ -27,7 +27,8 @@ gem 'jbuilder', '2.4.1'
 # gem 'bcrypt', '~> 3.1.7
 gem 'bootstrap-sass', '3.3.6'
 gem 'bcrypt', '3.1.11'
-
+gem 'will_paginate', '3.1.5'
+gem 'bootstrap-will_paginate', '0.0.10'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -36,6 +37,7 @@ group :development, :test do
   gem 'byebug', '9.0.0', platform: :mri
   gem 'sqlite3', '1.3.11'
   gem 'rails-controller-testing'
+  gem 'faker', '1.6.3'
 end
 
 group :development do
