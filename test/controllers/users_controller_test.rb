@@ -2,8 +2,10 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
+    @admin = users(:admin)
     @user = users(:david)
     @other_user = users(:jake)
+    @user_to_delete = users(:marry)
   end
   
   test "should get new" do
@@ -44,4 +46,29 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get users_path
     assert_redirected_to login_url
   end
+  
+  test "should redirect delete when not logged in" do 
+    assert_no_difference 'User.count' do 
+      delete user_path(@user_to_delete)
+    end
+    assert_redirected_to login_url
+  end
+  
+  test "should redirect delete when not admin" do 
+    log_in_as(@user)
+    assert_no_difference 'User.count' do 
+      delete user_path(@user_to_delete)
+    end
+    assert_redirected_to root_url
+  end
+  
+  test "admin should delete user" do 
+    log_in_as(@admin) 
+    assert_difference 'User.count', -1 do 
+      delete user_path(@user_to_delete)
+    end
+    
+    assert_redirected_to users_url
+  end
+  
 end

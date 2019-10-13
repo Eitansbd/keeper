@@ -1,0 +1,14 @@
+
+[1mFrom:[0m /home/ec2-user/environment/fishing_log/test/integration/users_index_test.rb @ line 30 UsersIndexTest#test_delete_for_admin:
+
+    [1;34m25[0m: test [31m[1;31m"[0m[31mdelete for admin[1;31m"[0m[31m[0m [32mdo[0m 
+    [1;34m26[0m:   log_in_as(@admin)
+    [1;34m27[0m:   get users_path
+    [1;34m28[0m:   [1;34;4mUser[0m.paginate([35mpage[0m: [1;34m1[0m).each [32mdo[0m |user|
+    [1;34m29[0m:     [32munless[0m user == @admin
+ => [1;34m30[0m:       binding.pry
+    [1;34m31[0m:       assert_select [31m[1;31m'[0m[31ma[href=?][1;31m'[0m[31m[0m, user_path(user), [35mtext[0m: [31m[1;31m'[0m[31mdelete[1;31m'[0m[31m[0m
+    [1;34m32[0m:     [32mend[0m
+    [1;34m33[0m:   [32mend[0m
+    [1;34m34[0m: [32mend[0m
+

@@ -38,6 +38,7 @@ group :development, :test do
   gem 'sqlite3', '1.3.11'
   gem 'rails-controller-testing'
   gem 'faker', '1.6.3'
+  gem 'pry'
 end
 
 group :development do
