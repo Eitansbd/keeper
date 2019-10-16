@@ -76,10 +76,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.authenticated?("")
   end
   
-  test "associated logs should be destroyed" do 
+  test "associated fishing trips should be destroyed" do 
     @user.save
-    @user.log_entries.create!(content: "Good Day Fishing")
-    assert_difference 'LogEntries.count', -1 do 
+    @user.fishing_trips.create!(content: "Good Day Fishing")
+    assert_difference 'FishingTrip.count', -1 do 
       @user.destroy
     end
   end

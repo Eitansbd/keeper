@@ -1,0 +1,26 @@
+trip1:
+  content: "No Fish Today"
+  created_at: <%= 10.minutes.ago %>
+  user: david
+
+trip2:
+  content: "Caught a big one!"
+  created_at: <%= 3.years.ago %>
+  user: david
+
+trip3:
+  content: "Lots of shorts"
+  created_at: <%= 2.hours.ago %>
+  user: david
+
+most_recent:
+  content: "Lots of bait in the water"
+  created_at: <%= Time.zone.now %>
+  user: david
+  
+<% 30.times do |n| %>
+trip_<%= n %>:
+  content: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= (n + 1).days.ago %>
+  user: david
+<% end %>
