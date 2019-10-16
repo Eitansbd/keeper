@@ -75,4 +75,12 @@ class UserTest < ActiveSupport::TestCase
   test "authenticated? should return false for user with nil digest" do
     assert_not @user.authenticated?("")
   end
+  
+  test "associated logs should be destroyed" do 
+    @user.save
+    @user.log_entries.create!(content: "Good Day Fishing")
+    assert_difference 'LogEntries.count', -1 do 
+      @user.destroy
+    end
+  end
 end
