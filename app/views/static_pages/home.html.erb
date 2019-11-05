@@ -1,12 +1,25 @@
 <% provide(:title, "Home") %>
-<div class="center jumbotron">
-  <h1>Welcome to the Sample App!</h1>
-  <h2>
-    This is the home page, Yehha
-  </h2>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user-info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="fishing_trip_form">
+        <%= render 'shared/fishing_trip_form' %>
+      </section>
+    </aside>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <h1>Welcome to the Fishing Trip App!</h1>
+    <h2>
+      We've all heard the phrase "They call it fishing, not catching", but why not up your game by keeping detailed logs of your previous trips and use the information to help you choose the best spots at the right times. Plus store all the pictures and stats on your previous catches and see how your PB's and latest catches rank against other fisherman out there. 
+    </h2>
+    
+    
+    <%= link_to "Sign_up_now!", signup_path, class: "btn btn-lg btn-primary" %>
+  </div>
   
-  
-  <%= link_to "Sign_up_now!", signup_path, class: "btn btn-lg btn-primary" %>
-</div>
-
-<%= link_to image_tag("rails.png", alt: "Rails logo"), 'http://rubyonrails.org' %>
+  <%= link_to image_tag("rails.png", alt: "Rails logo"), 'http://rubyonrails.org' %>
+<% end %>

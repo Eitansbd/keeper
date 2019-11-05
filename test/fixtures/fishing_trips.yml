@@ -1,14 +1,14 @@
-trip1:
+trip_1:
   content: "No Fish Today"
   created_at: <%= 10.minutes.ago %>
   user: david
 
-trip2:
+trip_2:
   content: "Caught a big one!"
   created_at: <%= 3.years.ago %>
   user: david
 
-trip3:
+trip_3:
   content: "Lots of shorts"
   created_at: <%= 2.hours.ago %>
   user: david

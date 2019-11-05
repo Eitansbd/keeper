@@ -3,7 +3,7 @@ require 'test_helper'
 class FishingTripTest < ActiveSupport::TestCase
   def setup
     @user = users(:david)
-    @fishing_trip = @user.fishing_trips.new(content: "Great Day on the Water")
+    @fishing_trip = @user.fishing_trips.build(content: "Great Day on the Water")
   end
   
   test "should be valid" do

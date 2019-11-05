@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#delete'
   
-  resources :microposts, only: [:create, :destroy]
+  resources :fishing_trips, only: [:create, :destroy]
 end
