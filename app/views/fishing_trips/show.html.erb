@@ -1,0 +1,45 @@
+<div class="row">
+  <h1><%= @fishing_trip.title %></h1>
+</div>
+
+<div class="row equal">
+  <div class="col-md-5">
+    <ul>
+      <li class="list-group-item text-center">
+        FISHING TRIP DETAILS
+      </li>
+      <li class="list-group-item">
+        Weather: <%= @fishing_trip.weather %>
+      </li>
+      <li class="list-group-item">
+        Body of Water: <%= @fishing_trip.body_of_water %>
+      </li>
+      <li class="list-group-item">
+        Location: <%= @fishing_trip.location %>
+      </li>
+      <li class="list-group-item">
+        Date: <%= @fishing_trip.date %>, <%= @fishing_trip.start_time.strftime("%H:%M") %> - <%= @fishing_trip.end_time.strftime("%H:%M") %>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <p>
+      <%= @fishing_trip.content %>
+    </p>
+  </div>
+</div>
+
+<div class="row equal">
+  <div class="col-md-1">
+    <button type="button" id="add-fish-catch" class="btn btn-default btn-sm btn-align">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Fish
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10" id="fish-catch-form" style="display: none;">
+    <%= render 'fish_catches/form' %>
+  </div>
+</div>
+
