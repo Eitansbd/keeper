@@ -33,6 +33,8 @@ gem 'bootstrap-will_paginate', '0.0.10'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'database_cleaner'
+  
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '9.0.0', platform: :mri
@@ -40,7 +42,6 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'faker', '1.6.3'
   gem 'pry'
-  gem 'database_cleaner'
 
 end
 
