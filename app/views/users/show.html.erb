@@ -2,16 +2,21 @@
 
 <div class="row">
   <aside class="col-md-4">
-    <sectoin class="user_info">
-     <h1>
-       <%= gravatar_for @user %>
-       <%= @user.name %>
-     </h1>
-    </sectoin>
+    <div row>
+      <section class="user_info">
+       <h1>
+         <%= gravatar_for @user %>
+         <%= @user.name %>
+       </h1>
+      </section>
+    </div>
+    <div row>
+      <%= render 'shared/fish_table' %>
+    </div>
   </aside>
-  <div class="col-md-8">
+  <div class="col-md-7 col-md-offset-1">
     <% if @user.fishing_trips.any? %>
-      <h3>Fishing Trips <%= @user.fishing_trips.count %></h3>
+      <h3>Fishing Trips</h3>
       <ol class="fishing-trips">
         <%= render @fishing_trips %>
       </ol>

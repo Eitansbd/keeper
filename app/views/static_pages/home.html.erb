@@ -1,13 +1,19 @@
 <% provide(:title, "Home") %>
 
-  <div class="center jumbotron">
-    <h1>Welcome to the Fishing Trip App!</h1>
-    <h2>
-      We've all heard the phrase "They call it fishing, not catching", but why not up your game by keeping detailed logs of your previous trips and use the information to help you choose the best spots at the right times. Plus store all the pictures and stats on your previous catches and see how your PB's and latest catches rank against other fisherman out there. 
-    </h2>
-    
-    
-    <%= link_to "Sign_up_now!", signup_path, class: "btn btn-lg btn-primary" %>
+  <div class="row">
+    <div class="col-md-7">
+      <h1>Recent Trips</h1>
+      <ol class="fishing-trips">
+        <%= render @fishing_trips %>
+      </ol>
+    </div>
+     <div class="col-md-4 col-md-offset-1">
+      <%= render 'shared/fish_table' %>
+    </div>
   </div>
+  
+ 
+
+
   
   

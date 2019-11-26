@@ -9,9 +9,60 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
+//= require popper
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+function updateTable(data, field) {
+   $(".top-fish-body").empty();
+   $.each(data.fish, function(index, fish) {
+            $(".top-fish-body").append(`<tr id="fish-${index + 1}"><th>${(index + 1)}</th><td>${field == "length" ? fish.length : fish.weight}</td><td>${fish.species.name}</td><td><a href=${fish.angler.url}>${fish.angler.name}</td></tr>`);
+  });
+}
+
+
+
+
+$(document).ready(function(){
+  
+  $("#add-fish-catch").click(function(){
+    $("#fish-catch-form").show();
+  });
+  
+  $(".cancel-form").click(function() {
+    $("#fish-catch-form").hide();
+  });
+  
+  $(".top-fish").change(function() {
+    let field = ($("#top-fish-sort-field").find(':selected').data('id'))
+    let type = ($("#top-fish-species-field").find(':selected').data('id'))
+    let user_id = window.location.pathname.split("/")[2]
+    let data = {
+      sortBy: field,
+      limit: 10,
+    }
+    if (type) data.type = type 
+    if (user_id) data.user_id = user_id
+    
+    
+    $.ajax({
+      url: `/fish_catches`,
+      type: "GET",
+      data: data,
+      success: function(data) {
+        updateTable(data, field)
+      }
+      // function(data) {
+
+      //   $.each(data.fish, function(index, fish) {
+      //       $("#fish-" + (index + 1)).replaceWith(`<tr id="fish-${index + 1}"><th>${(index + 1)}</th><td>${field == "length" ? fish.length : fish.weight}</td><td>${fish.species.name}</td><td><a href=${fish.angler.url}>${fish.angler.name}</td></tr>`);
+      //   });
+      // }
+    });
+  });
+  
+});
