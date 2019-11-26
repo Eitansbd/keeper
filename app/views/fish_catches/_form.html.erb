@@ -1,0 +1,21 @@
+<%= form_for [@fishing_trip, @fishing_trip.fish_catches.build] do |f| %>
+  <div class="row equal">
+    <div class="col-md-2 form-group">
+      <%= f.label :weight %>
+      <%= f.number_field :weight, class: "form-control" %>
+    </div>
+    <div class="col-md-2 form-group">
+      <%= f.label :length %>
+      <%= f.number_field :length, class: "form-control" %>
+    </div>
+    <div class="col-md-2 form-group">
+      <%= f.label "What Species?" %>
+      <%= f.select(:fish_type_id, fish_type_options(@fish_types), { include_blank: true }, class: "form-control") %>
+    </div>
+    <div class="col-md-4 btn-align">
+      <span class="btn btn-primary cancel-form">Cancel</span>
+      <%= f.submit "Upload", class: "btn btn-primary" %>
+    </div>
+    
+  </div>
+<% end %>
