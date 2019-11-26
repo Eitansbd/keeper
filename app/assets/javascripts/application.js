@@ -50,7 +50,7 @@ $(document).ready(function(){
     
     
     $.ajax({
-      url: `/fish_catches`,
+      url: "/fish_catches",
       type: "GET",
       data: data,
       success: function(data) {
