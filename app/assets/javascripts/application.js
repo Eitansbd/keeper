@@ -56,12 +56,6 @@ $(document).ready(function(){
       success: function(data) {
         updateTable(data, field)
       }
-      // function(data) {
-
-      //   $.each(data.fish, function(index, fish) {
-      //       $("#fish-" + (index + 1)).replaceWith(`<tr id="fish-${index + 1}"><th>${(index + 1)}</th><td>${field == "length" ? fish.length : fish.weight}</td><td>${fish.species.name}</td><td><a href=${fish.angler.url}>${fish.angler.name}</td></tr>`);
-      //   });
-      // }
     });
   });
   
