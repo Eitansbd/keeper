@@ -34,13 +34,13 @@ gem 'bootstrap-will_paginate', '0.0.10'
 # gem 'capistrano-rails', group: :development
 
 gem 'database_cleaner'
-  
+gem 'faker', '1.6.3'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '9.0.0', platform: :mri
   gem 'sqlite3', '1.3.11'
   gem 'rails-controller-testing'
-  gem 'faker', '1.6.3'
+  
   gem 'pry'
 
 end
