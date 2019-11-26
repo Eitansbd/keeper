@@ -1,0 +1,33 @@
+<h1>Top Catches</h1>
+<table class="table table-striped top-fish">
+  <thead>
+    <tr>
+      <th scope="col">Rank</th>
+      <th scope="col">
+        <select id="top-fish-sort-field">
+          <option data-id="weight">Weight</option>
+          <option data-id="length">Length</option>
+        </select>
+      </th>
+      <th scope="col">
+        <select id="top-fish-species-field">
+          <option>Species</option>
+          <% FishType.all.each do |fish_type| %>
+          <option data-id="<%= fish_type.id %>"><%= fish_type.name %></option>
+          <% end %>
+        </select>
+      </th>
+      <th scope="col">Angler</th>
+    </tr>
+  </thead>
+  <tbody class="top-fish-body">
+    <% @top_fish.each_with_index do |fish, index| %>
+      <tr id="fish-<%= index + 1 %>">
+        <th scope="row"><%= index + 1 %></th>
+        <td><%= fish.weight %></td>
+        <td><%= fish.fish_type.name %></td>
+        <td><%= link_to fish.user.name, fish.user %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
