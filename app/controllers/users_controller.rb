@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @fishing_trips = @user.fishing_trips.paginate(page: params[:page])
+    @fishing_trips = @user.fishing_trips.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    @top_fish = @user.top_fish
   end
   
   def new
@@ -29,7 +30,6 @@ class UsersController < ApplicationController
   end
   
   def edit
-    # @user is defined in before filter
   end
 
   def update
