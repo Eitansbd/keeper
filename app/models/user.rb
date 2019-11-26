@@ -2,6 +2,7 @@ class User < ApplicationRecord
   attr_accessor :remember_token
 
   has_many :fishing_trips, dependent: :destroy
+  has_many :fish_catches, dependent: :destroy
   
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
@@ -12,6 +13,10 @@ class User < ApplicationRecord
                    uniqueness: { case_sensitive: false }
   has_secure_password  
   validates :password, length: { minimum: 6 }, presence: true
+  
+  def top_fish
+    FishCatch.find_top_fish(:weight, 10, nil, self.id)
+  end
   
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
