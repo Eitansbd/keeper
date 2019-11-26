@@ -20,7 +20,7 @@
 function updateTable(data, field) {
    $(".top-fish-body").empty();
    $.each(data.fish, function(index, fish) {
-            $(".top-fish-body").append('<tr id="fish-${index + 1}"><th>${(index + 1)}</th><td>${field == "length" ? fish.length : fish.weight}</td><td>${fish.species.name}</td><td><a href=${fish.angler.url}>${fish.angler.name}</td></tr>');
+            $(".top-fish-body").append("<tr id='fish-" + (index + 1) + "'><th>" + (index + 1) + "</th><td>" + (field == "length" ? fish.length : fish.weight) + "</td><td>" + fish.species.name + "</td><td><a href=" + fish.angler.url + ">" + fish.angler.name + "</td></tr>")
   });
 }
 
@@ -38,10 +38,10 @@ $(document).ready(function(){
   });
   
   $(".top-fish").change(function() {
-    let field = ($("#top-fish-sort-field").find(':selected').data('id'))
-    let type = ($("#top-fish-species-field").find(':selected').data('id'))
-    let user_id = window.location.pathname.split("/")[2]
-    let data = {
+    var field = ($("#top-fish-sort-field").find(':selected').data('id'))
+    var type = ($("#top-fish-species-field").find(':selected').data('id'))
+    var user_id = window.location.pathname.split("/")[2]
+    var data = {
       sortBy: field,
       limit: 10,
     }
