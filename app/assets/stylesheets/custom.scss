@@ -31,6 +31,12 @@ textarea {
   }
 }
 
+.equal {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -141,31 +147,39 @@ aside {
 }
 
 /* forms */
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
-}
+// input, textarea, select, .uneditable-input {
+//   border: 1px solid #bbb;
+//   width: 100%;
+//   margin-bottom: 15px;
+//   @include box_sizing;
+// }
 
 input {
   height: auto !important;
 }
 
-#error_explanation {
-  color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
+form #fishing_trip_content {
+  height: 90%;
 }
 
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
+.btn-align {
+  margin-top: 22px
 }
+
+// #error_explanation {
+//   color: red;
+//   ul {
+//     color: red;
+//     margin: 0 0 30px 0;
+//   }
+// }
+
+// .field_with_errors {
+//   @extend .has-error;
+//   .form-control {
+//     color: $state-danger-text;
+//   }
+// }
 
 .checkbox {
   margin-top: -10px;
@@ -237,4 +251,8 @@ span.picture {
   input {
     border: 0;
   }
+}
+
+.top-fish td {
+  font-size: 12px;
 }
