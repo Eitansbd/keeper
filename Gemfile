@@ -26,6 +26,7 @@ gem 'jbuilder', '2.4.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7
 gem 'bootstrap-sass', '3.3.6'
+gem 'popper_js', '~> 1.11', '>= 1.11.1'
 gem 'bcrypt', '3.1.11'
 gem 'will_paginate', '3.1.5'
 gem 'bootstrap-will_paginate', '0.0.10'
@@ -39,6 +40,8 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'faker', '1.6.3'
   gem 'pry'
+  gem 'database_cleaner'
+
 end
 
 group :development do
