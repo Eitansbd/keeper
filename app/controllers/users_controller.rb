@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :create_image]
+  before_action :correct_user, only: [:edit, :update, :create_image]
   before_action :admin_user, only: :destroy  
   
   def index
@@ -46,6 +46,13 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
     redirect_to users_url
+  end
+  
+  def create_image
+    @user = User.find(params[:id])
+    @user.update_attributes(params.require(:user).permit(:profile_image))
+    
+    redirect_to user_url (@user)
   end
   
   private

@@ -1,8 +1,14 @@
 <li id="fishing-trip-<%= fishing_trip.id %>">
-  <%= link_to gravatar_for(fishing_trip.user, size: 50), fishing_trip_path(fishing_trip) %>
-  <span class="user"><%= link_to fishing_trip.title, fishing_trip_path(fishing_trip) %></span>
-  <span class="content"><%= fishing_trip.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(fishing_trip.created_at) %> ago.
-  </span>
+  <div class="row">
+    <div class="col-md-2">
+      <%= link_to image_tag(fishing_trip.user.profile_image.url(:thumbnail)), fishing_trip_path(fishing_trip) %>
+    </div>
+    <div class="col-md-10">
+      <span class="user"><%= link_to fishing_trip.title, fishing_trip_path(fishing_trip) %></span>
+      <span class="content"><%= fishing_trip.content %></span>
+      <span class="timestamp">
+      Posted <%= time_ago_in_words(fishing_trip.created_at) %> ago.
+      </span>
+    </div>
+  </div>
 </li>

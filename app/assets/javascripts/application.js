@@ -37,6 +37,10 @@ $(document).ready(function(){
     $("#fish-catch-form").hide();
   });
   
+  $("input[type='file']").change(function(){
+   $(".profile-image-upload-button").show();
+   });  
+  
   $(".top-fish").change(function() {
     var field = ($("#top-fish-sort-field").find(':selected').data('id'))
     var type = ($("#top-fish-species-field").find(':selected').data('id'))

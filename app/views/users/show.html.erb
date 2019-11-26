@@ -4,11 +4,17 @@
   <aside class="col-md-4">
     <div row>
       <section class="user_info">
-       <h1>
-         <%= gravatar_for @user %>
-         <%= @user.name %>
-       </h1>
+        <h1>
+          <%= @user.name %>
+        </h1>
+        <%= image_tag @user.profile_image.url(:square) %>
       </section>
+      <% if @user == current_user %>
+        <%= form_for @user, url: users_profile_image_path(@user.id) do |f| %>
+            <%= f.file_field :profile_image, accept: 'image/png,image/jpeg' %>
+            <%= f.submit "upload", class: "profile-image-upload-button", style: "display: none;" %>
+        <% end %>
+      <% end %>
     </div>
     <div row>
       <%= render 'shared/fish_table' %>

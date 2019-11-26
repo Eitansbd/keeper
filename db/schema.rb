@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191125215707) do
+ActiveRecord::Schema.define(version: 20191126151410) do
 
   create_table "fish_catches", force: :cascade do |t|
     t.decimal  "weight",          precision: 6, scale: 2
@@ -52,11 +52,15 @@ ActiveRecord::Schema.define(version: 20191125215707) do
   create_table "users", force: :cascade do |t|
     t.text     "name"
     t.text     "email"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.string   "password_digest"
     t.string   "remember_digest"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",                      default: false
+    t.string   "profile_image_file_name"
+    t.string   "profile_image_content_type"
+    t.bigint   "profile_image_file_size"
+    t.datetime "profile_image_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

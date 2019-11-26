@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :fish_catches, only: [:index]
   
   resources :users
+  patch '/users/:id/profile_image', to: "users#create_image", as: "users_profile_image"
   resources :fishing_trips do
     resources :fish_catches
   end

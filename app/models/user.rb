@@ -3,7 +3,14 @@ class User < ApplicationRecord
 
   has_many :fishing_trips, dependent: :destroy
   has_many :fish_catches, dependent: :destroy
+  has_attached_file :profile_image, styles: {
+    thumbnail: '100x100>',
+    square: '200x200#',
+    medium: '300x300>'
+  }, default_url: "/images/:style/smile-emoji.png"
   
+  validates_attachment_content_type :profile_image, content_type: /\Aimage/
+
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -12,7 +19,9 @@ class User < ApplicationRecord
                    format: { with: VALID_EMAIL_REGEX },
                    uniqueness: { case_sensitive: false }
   has_secure_password  
-  validates :password, length: { minimum: 6 }, presence: true
+  validates :password, length: { minimum: 6 }, 
+                       presence: true,
+                       if: :password_digest_changed?
   
   def top_fish
     FishCatch.find_top_fish(:weight, 10, nil, self.id)
