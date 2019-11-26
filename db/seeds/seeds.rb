@@ -1,7 +1,7 @@
-# require 'database_cleaner'
-# DatabaseCleaner.strategy = :truncation
+require 'database_cleaner'
+DatabaseCleaner.strategy = :truncation
 
-# DatabaseCleaner.clean
+DatabaseCleaner.clean
 
 
 # Fish types
