@@ -10,13 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191101203709) do
+ActiveRecord::Schema.define(version: 20191125215707) do
+
+  create_table "fish_catches", force: :cascade do |t|
+    t.decimal  "weight",          precision: 6, scale: 2
+    t.decimal  "length",          precision: 6, scale: 2
+    t.integer  "fish_type_id"
+    t.integer  "fishing_trip_id"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "user_id"
+    t.index ["fish_type_id"], name: "index_fish_catches_on_fish_type_id"
+    t.index ["fishing_trip_id"], name: "index_fish_catches_on_fishing_trip_id"
+    t.index ["user_id"], name: "index_fish_catches_on_user_id"
+  end
+
+  create_table "fish_types", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.decimal  "record_length", precision: 6, scale: 2
+    t.decimal  "record_weight", precision: 6, scale: 2
+  end
 
   create_table "fishing_trips", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.text     "title"
+    t.text     "weather"
+    t.text     "body_of_water"
+    t.text     "location"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.date     "date"
     t.index ["user_id", "created_at"], name: "index_fishing_trips_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_fishing_trips_on_user_id"
   end

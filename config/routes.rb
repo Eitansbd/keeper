@@ -10,8 +10,12 @@ Rails.application.routes.draw do
   # doing this creates root_path and root_url variables
   root 'static_pages#home'
   
+  resources :fish_catches, only: [:index]
+  
   resources :users
-  resources :fishing_trips, only: [:new, :create, :edit, :update, :destory]
+  resources :fishing_trips do
+    resources :fish_catches
+  end
   
   
   get '/login', to: 'sessions#new'
