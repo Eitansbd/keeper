@@ -10,13 +10,11 @@ Rails.application.routes.draw do
   # doing this creates root_path and root_url variables
   root 'static_pages#home'
   
-  resources :fish_catches, only: [:index]
+  resources :fish_catches, only: [:index, :destroy, :create]
   
   resources :users
   patch '/users/:id/profile_image', to: "users#create_image", as: "users_profile_image"
-  resources :fishing_trips do
-    resources :fish_catches
-  end
+  resources :fishing_trips
   
   
   get '/login', to: 'sessions#new'

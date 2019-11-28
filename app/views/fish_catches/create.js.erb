@@ -1,0 +1,20 @@
+
+
+<% if @fishing_trip.fish_catches.count == 1 %>
+  $('.fishing-trip-body').after("<%= j render(partial: 'fish_catches/fish_catch_carousel') %>");
+  $('#new_fish_catch')[0].reset();
+  $("#fish-catch-form").hide();
+<% else %>
+  <% indicator = '<li data-target="#fish_catch_carousel" data-slide-to="#{@fishing_trip.fish_catches.count - 1}" ></li>'  %>
+  <!--$(".carousel-indicators").append(< %= indicator %>);-->
+  <!--alert(< %= indicator %>);-->
+  console.log( <%= "a".html_safe %>);
+  <!--$(".carousel-inner").append("-->
+  <!--    <div>-->
+  <!--      < %= image_tag @fish_catch.image.url, class: "center-block w-100" %>-->
+  <!--      <div class="carousel-caption d-none d-md-block">-->
+  <!--        <h5>< %= @fish_catch.fish_type.name %></h5>-->
+  <!--        <p>Weight: < %= @fish_catch.weight %>  |  Length: < %= @fish_catch.length %></p>-->
+  <!--      </div>-->
+  <!--    </div>"-->
+<% end %>

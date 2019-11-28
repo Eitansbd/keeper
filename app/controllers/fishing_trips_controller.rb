@@ -20,6 +20,16 @@ class FishingTripsController < ApplicationController
     @fishing_trip = FishingTrip.find(params[:id])
   end
   
+  def update
+    @fishing_trip = FishingTrip.find(params[:id])
+    if @fishing_trip.update_attributes(fishing_trip_params) 
+      flash[:success] = "Fishing Trip Updated Successfully"
+      redirect_to fishing_trip_url
+    else
+      render 'edit'
+    end
+  end
+  
   def show
     @fishing_trip = FishingTrip.find(params[:id])
     @fish_types = FishType.all

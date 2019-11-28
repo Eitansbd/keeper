@@ -57,6 +57,29 @@ h2 {
   color: $gray-light;
 }
 
+.top-buffer-md {
+  margin-top: 20px;
+}
+
+.top-buffer-sm {
+  margin-top: 50px;
+}
+
+.top-buffer-lg {
+  margin-top: 80px;
+}
+
+.bottom-buffer-md {
+  margin-bottom: 20px;
+}
+
+.bottom-buffer-sm {
+  margin-bottom: 50px;
+}
+
+.bottom-buffer-lg {
+  margin-bottom: 80px;
+}
 /* header */
 
 #logo {
@@ -130,23 +153,6 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
-.gravatar_edit {
-  margin-top: 15px;
-}
-
-/* forms */
-// input, textarea, select, .uneditable-input {
-//   border: 1px solid #bbb;
-//   width: 100%;
-//   margin-bottom: 15px;
-//   @include box_sizing;
-// }
-
 input {
   height: auto !important;
 }
@@ -160,21 +166,6 @@ input {
 .btn-align {
   margin-top: 22px
 }
-
-// #error_explanation {
-//   color: red;
-//   ul {
-//     color: red;
-//     margin: 0 0 30px 0;
-//   }
-// }
-
-// .field_with_errors {
-//   @extend .has-error;
-//   .form-control {
-//     color: $state-danger-text;
-//   }
-// }
 
 .checkbox {
   margin-top: -10px;
@@ -257,6 +248,19 @@ input {
       color: black;
     }
   }
+}
+
+.list-item-inline {
+  margin-right: -5px;
+}
+
+.list-inline {
+  margin-bottom: 0px;
+}
+
+.fish-catch-img-delete {
+  width: 80%;
+  margin: auto;
 }
 
 aside {

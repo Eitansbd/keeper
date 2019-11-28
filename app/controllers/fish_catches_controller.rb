@@ -1,12 +1,27 @@
 class FishCatchesController < ApplicationController
   def create
-    byebug
     @fish_catch = current_user.fish_catches.build(fish_catch_params)
-    
-    if @fish_catch.save
-      flash[:success] = "Congrats on the catch"
-    else
+    @fishing_trip = @fish_catch.fishing_trip
+    respond_to do |format|
+      if @fish_catch.save
+        format.js 
+      else
       
+      end
+    end
+  end
+  
+  def destroy
+    @fish_catch = FishCatch.find(params[:id])
+    fishing_trip = @fish_catch.fishing_trip.id
+    @fish_catch.destroy
+    
+    respond_to do |format|
+      format.js
+      format.html do
+          flash[:success] = "You deleted the fish"
+         redirect_to fishing_trip_path(fishing_trip)
+      end
     end
   end
   
@@ -42,9 +57,9 @@ class FishCatchesController < ApplicationController
     end
     
     def fish_catch_params
-      params.require(:fish_catch)
-      .permit(:length, :weight, :fish_type_id, :image)
-      .merge({fishing_trip_id: params[:fishing_trip_id]})
+      params.require(:fish_catch).permit(:length, :weight, :fish_type_id, 
+                                         :image, :fishing_trip_id)
+
     end
     
     def fishing_trip_params

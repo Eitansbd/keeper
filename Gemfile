@@ -37,7 +37,7 @@ gem 'database_cleaner'
 gem 'faker', '1.6.3'
 gem 'aws-sdk', '3.0'
 gem 'paperclip'
-
+gem 'remotipart'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '9.0.0', platform: :mri

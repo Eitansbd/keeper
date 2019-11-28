@@ -2,3 +2,26 @@
 <% provide(:button_text, 'Edit Fishing Trip') %>
 
 <%= render 'form' %>
+
+<div class="row top-buffer-md">
+<% @fishing_trip.fish_catches.each_with_index do |fish_catch, index| %>
+  <div class="col-md-6 bottom-buffer-sm" id="fish-catch-<%= fish_catch.id %>">
+    <ul class="list-inline list-group">
+      
+      
+      <li class="list-group-item list-item-inline">Species: <%= fish_catch.fish_type.name %></li>
+      <li class="list-group-item list-item-inline">Weight: <%= fish_catch.weight %></li>
+      <li class="list-group-item list-item-inline">Length: <%= fish_catch.length %></li>
+      <li class="btn">
+        <%= link_to fish_catch_url(fish_catch), 
+                    method: :delete,
+                    remote: true,
+                    data: {confirm: "Are you sure you want to delete the fish?"} do %>
+          <span class=" btn btn-danger glyphicon glyphicon-remove" aria-hidden="true"></span>
+        <% end %>
+      </li>
+    </ul>
+    <%= image_tag fish_catch.image.url, class: "fish-catch-img-delete" %>
+  </div>
+<% end %>
+</div>

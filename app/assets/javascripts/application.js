@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+//= require jquery.remotipart
 
 function updateTable(data, field) {
    $(".top-fish-body").empty();
