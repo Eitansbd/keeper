@@ -46,22 +46,15 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
-  margin-bottom: 30px;
   text-align: center;
 }
 
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
-  margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
   color: $gray-light;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
 }
 
 /* header */
@@ -158,8 +151,10 @@ input {
   height: auto !important;
 }
 
-form #fishing_trip_content {
-  height: 90%;
+#fishing_trip_content {
+  height: 80%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .btn-align {
@@ -217,9 +212,12 @@ form #fishing_trip_content {
   }
   img {
       display: block;
-      padding: 5px 0;
-      width: 50px;
+      width: 80px;
+      margin-right: 10px;
     }
+  .trip-details {
+    margin-left: 10px;
+  }
   .user {
     margin-top: 5em;
     padding-top: 0;
@@ -230,6 +228,34 @@ form #fishing_trip_content {
   .timestamp {
     color: $gray-light;
     display: block;
+  }
+  .media {
+    margin-top: 0px;
+  }
+}
+
+.fishing-trip-header {
+  h1 {
+    font-size: 35px;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+}
+
+#fish_catch_carousel {
+  margin-top: 50px;
+  .carousel-caption {
+    width: fit-content;
+    float: right;
+    p, h5 {
+      background-color: white;
+      margin: 0px;
+      font-size: 30px;
+      color: black;
+    }
   }
 }
 
@@ -251,9 +277,35 @@ span.picture {
   font-size: 12px;
 }
 
-/* user show */
-input[type="file"] {
-  color: transparent;
-  display: inline;
-  width: 90px;
+.fish-catch-container {
+  margin-top: 20px;
+  .fish-catch-img {
+    width: 100%;
+  }
+  .fish-catch-details {
+    font-size: 16px;
+  }
 }
+
+/* top fish table */
+.top-fish {
+  text-align: center;
+  .btn {
+    padding: 0px;
+    font-weight: bold;
+  }
+  th {
+    text-align: center;
+  }
+  td {
+    font-size: 14px;
+  }
+  
+}
+
+// /* user show */
+// input[type="file"] {
+//   color: transparent;
+//   display: inline;
+//   width: 90px;
+// }

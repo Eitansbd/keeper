@@ -1,12 +1,37 @@
-<div class="row">
-  <h1><%= @fishing_trip.title %></h1>
+<div class="page-header fishing-trip-header">
+  <div class="row">
+    <div class="col-md-5 col-md-offset-4">
+      <div class="media text-center">
+        <div class="media-right media-middle">
+          <%= link_to image_tag(@fishing_trip.user.profile_image.url(:thumbnail), class: "media-object img-circle"),user_path(@fishing_trip.user) %>
+        </div>
+        <div class="media-body">
+          <h1 class="media-heading"><%= @fishing_trip.title %></h1>
+          <p><%= @fishing_trip.user.name %></p>
+          <p>Posted <%= time_ago_in_words(@fishing_trip.created_at) %> ago.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if current_user == @fishing_trip.user %>
+    <%= link_to "Edit", edit_fishing_trip_path(@fishing_trip), class: "btn btn-primary" %>
+  <% end %>
 </div>
 
-<div class="row equal">
-  <div class="col-md-5">
-    <ul>
+<div class="row">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Fishing Trip Summary</h3>
+      </div>
+      <div class="panel-body">
+        <%= @fishing_trip.content %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
       <li class="list-group-item text-center">
-        FISHING TRIP DETAILS
+        DETAILS
       </li>
       <li class="list-group-item">
         Weather: <%= @fishing_trip.weather %>
@@ -22,12 +47,9 @@
       </li>
     </ul>
   </div>
-  <div class="col-md-6">
-    <p>
-      <%= @fishing_trip.content %>
-    </p>
-  </div>
 </div>
+
+<%= render 'fish_catches/fish_catch_carousel' %>
 
 <div class="row equal">
   <div class="col-md-1">
@@ -42,4 +64,5 @@
     <%= render 'fish_catches/form' %>
   </div>
 </div>
+
 

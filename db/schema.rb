@@ -10,16 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191126151410) do
+ActiveRecord::Schema.define(version: 20191127151333) do
 
   create_table "fish_catches", force: :cascade do |t|
-    t.decimal  "weight",          precision: 6, scale: 2
-    t.decimal  "length",          precision: 6, scale: 2
+    t.decimal  "weight",             precision: 6, scale: 2
+    t.decimal  "length",             precision: 6, scale: 2
     t.integer  "fish_type_id"
     t.integer  "fishing_trip_id"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "user_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.bigint   "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["fish_type_id"], name: "index_fish_catches_on_fish_type_id"
     t.index ["fishing_trip_id"], name: "index_fish_catches_on_fishing_trip_id"
     t.index ["user_id"], name: "index_fish_catches_on_user_id"

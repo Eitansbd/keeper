@@ -12,10 +12,15 @@
       <%= f.label "What Species?" %>
       <%= f.select(:fish_type_id, fish_type_options(@fish_types), { include_blank: true }, class: "form-control") %>
     </div>
-    <div class="col-md-4 btn-align">
+    <div class="col-md-2 form-group">
+      <%= f.label :image, "choose image", class: "btn btn-primary btn-align" %>
+      <%= f.file_field(:image, accept: 'image/png,image/jpeg', style: "display:none;")%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 btn-group form-group">
       <span class="btn btn-primary cancel-form">Cancel</span>
       <%= f.submit "Upload", class: "btn btn-primary" %>
     </div>
-    
   </div>
 <% end %>

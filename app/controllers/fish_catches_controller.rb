@@ -1,7 +1,7 @@
 class FishCatchesController < ApplicationController
   def create
-    
-    @fish_catch = FishCatch.new(fish_catch_params)
+    byebug
+    @fish_catch = current_user.fish_catches.build(fish_catch_params)
     
     if @fish_catch.save
       flash[:success] = "Congrats on the catch"
@@ -19,7 +19,7 @@ class FishCatchesController < ApplicationController
     else
       @fish_catches = FishCatch.find_top_fish(@sort_field, @limit, @type, @user_id)
       
-      render 'top_fish.json'
+      render 'top_fish.json', status: 200
     end
   end
   
@@ -43,8 +43,12 @@ class FishCatchesController < ApplicationController
     
     def fish_catch_params
       params.require(:fish_catch)
-      .permit(:length, :weight, :fish_type_id)
+      .permit(:length, :weight, :fish_type_id, :image)
       .merge({fishing_trip_id: params[:fishing_trip_id]})
+    end
+    
+    def fishing_trip_params
+      params.require(:fishing_trip_id)
     end
     
     def json_response(object, status = :ok)

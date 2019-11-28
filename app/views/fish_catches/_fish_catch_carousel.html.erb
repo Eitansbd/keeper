@@ -1,0 +1,30 @@
+<div class="container">
+  <div id="fish_catch_carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <% @fishing_trip.fish_catches.size.times do |num| %>
+      <li data-target="#fish_catch_carousel" data-slide-to="<%= num %>" class="<%= num == 0 ? 'active' : nil %>"></li>
+      <% end %>
+    </ol>
+
+    <div class="carousel-inner">
+    <% @fishing_trip.fish_catches.each_with_index do |fish_catch, index| %>
+      <div class="item <%= index == 0 ? 'active' : nil %>">
+        <%= image_tag fish_catch.image.url, class: "center-block w-100" %>
+        <div class="carousel-caption d-none d-md-block">
+          <h5><%= fish_catch.fish_type.name %></h5>
+          <p>Weight: <%= fish_catch.weight %>  |  Length: <%= fish_catch.length %></p>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  
+    <a class="left carousel-control" href="#fish_catch_carousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#fish_catch_carousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>

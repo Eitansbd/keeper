@@ -28,6 +28,9 @@ function updateTable(data, field) {
 
 
 $(document).ready(function(){
+  $('.carousel').carousel({
+    wrao: false
+  })
   
   $("#add-fish-catch").click(function(){
     $("#fish-catch-form").show();

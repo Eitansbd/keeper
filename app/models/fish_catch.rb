@@ -3,6 +3,14 @@ class FishCatch < ApplicationRecord
   belongs_to :fishing_trip, optional: true
   belongs_to :fish_type
   
+  has_attached_file :image, styles: {
+    thumbnail: '100x100>',
+    square: '200x200#',
+    medium: '300x300>'
+  }, default_url: "/images/:style/smile-emoji.png"
+  
+  validates_attachment_content_type :image, content_type: /\Aimage/
+  
   validates :weight, numericality: { greater_than: 0 }
   validates :length, numericality: { greater_than: 0 }
   validate :below_world_record, if: [:weight, :length]

@@ -1,38 +1,4 @@
 <% provide(:title, 'Fishing Trip') %>
 <% provide(:button_text, 'Add Fishing Trip') %>
 
-<%= form_for(@fishing_trip) do |f| %>
-<%= render('shared/error_messages', record: @fishing_trip) %>
-  <div class="row equal">
-    <div class="col-md-4">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-      
-      <%= f.label :weather %>
-      <%= f.text_field :weather %>
-      
-      <%= f.label :body_of_water %>
-      <%= f.text_field :body_of_water %>
-      
-      <%= f.label :location %>
-      <%= f.text_field :location %>
-      
-      <%= f.label :date %>
-      <%= f.date_field :date %>
-      
-      <%= f.label :start_time %>
-      <%= f.time_field :start_time %>
-      
-      <%= f.label :end_time %>
-      <%= f.time_field :end_time %>
-      
-    </div>
-    <div class="col-md-8">
-      <%= f.label :content %>
-      <%= f.text_area :content %>
-    </div>
-  </div>
-  <div class="row">
-    <%= f.submit "Post Trip", class: "btn btn-primary pull-right" %>
-  </div>
-<% end %>
+<%= render 'form' %>

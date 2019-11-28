@@ -16,6 +16,10 @@ class FishingTripsController < ApplicationController
     end
   end
   
+  def edit
+    @fishing_trip = FishingTrip.find(params[:id])
+  end
+  
   def show
     @fishing_trip = FishingTrip.find(params[:id])
     @fish_types = FishType.all

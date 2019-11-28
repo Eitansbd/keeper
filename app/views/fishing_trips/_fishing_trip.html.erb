@@ -1,14 +1,12 @@
-<li id="fishing-trip-<%= fishing_trip.id %>">
-  <div class="row">
-    <div class="col-md-2">
-      <%= link_to image_tag(fishing_trip.user.profile_image.url(:thumbnail)), fishing_trip_path(fishing_trip) %>
+<li class="media">
+  <div class="media">
+    <div class="media-left media-middle">
+      <%= link_to image_tag(fishing_trip_fish_catches_image(fishing_trip, :thumbnail), class: "media-object"), fishing_trip_path(fishing_trip) %>
     </div>
-    <div class="col-md-10">
-      <span class="user"><%= link_to fishing_trip.title, fishing_trip_path(fishing_trip) %></span>
-      <span class="content"><%= fishing_trip.content %></span>
-      <span class="timestamp">
-      Posted <%= time_ago_in_words(fishing_trip.created_at) %> ago.
-      </span>
+    <div class="media-body">
+      <h4 class="media-heading"><%= link_to fishing_trip.title, fishing_trip_path(fishing_trip) %></h4>
+      <p><%= fishing_trip.content.truncate_words(15) %></p>
+      <p>Posted <%= time_ago_in_words(fishing_trip.created_at) %> ago.</p>
     </div>
   </div>
 </li>

@@ -1,7 +1,7 @@
 <% provide(:title, @user.name) %>
 
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-5">
     <div row>
       <section class="user_info">
         <h1>
@@ -10,7 +10,7 @@
         <%= image_tag @user.profile_image.url(:square) %>
       </section>
       <% if @user == current_user %>
-        <%= form_for @user, url: users_profile_image_path(@user.id) do |f| %>
+        <%= form_for @user, url: users_profile_image_path(@user.id), remote: true, authenticity_token: true do |f| %>
             <%= f.file_field :profile_image, accept: 'image/png,image/jpeg' %>
             <%= f.submit "upload", class: "profile-image-upload-button", style: "display: none;" %>
         <% end %>
@@ -20,7 +20,7 @@
       <%= render 'shared/fish_table' %>
     </div>
   </aside>
-  <div class="col-md-7 col-md-offset-1">
+  <div class="col-md-5 col-md-offset-1">
     <% if @user.fishing_trips.any? %>
       <h3>Fishing Trips</h3>
       <ol class="fishing-trips">
