@@ -167,6 +167,8 @@ input {
   margin-top: 22px
 }
 
+
+
 .checkbox {
   margin-top: -10px;
   margin-bottom: 10px;
@@ -226,6 +228,7 @@ input {
 }
 
 .fishing-trip-header {
+  position: relative;
   h1 {
     font-size: 35px;
     margin-bottom: 10px;
@@ -233,6 +236,13 @@ input {
   p {
     font-size: 16px;
     margin-bottom: 5px;
+  }
+  
+  .btn-align-bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 5px;
   }
 }
 

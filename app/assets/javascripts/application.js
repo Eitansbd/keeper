@@ -26,9 +26,10 @@ function updateTable(data, field) {
 }
 
 
-
+document.addEventListener("turbolinks:load", function() {
 
 $(document).ready(function(){
+  
   $("#new_fish_catch").bind("ajax:before", function(e) {
     console.log(this)
     console.log(e)
@@ -73,3 +74,5 @@ $(document).ready(function(){
   });
   
 });
+
+})

@@ -5,15 +5,19 @@
       <%= f.label :weight %>
       <%= f.number_field :weight, class: "form-control" %>
     </div>
-    <div class="col-md-3 form-group">
+    <div class="col-md-2 form-group">
       <%= f.label :length %>
+      <div class="input-group">
       <%= f.number_field :length, class: "form-control", step: "0.01" %>
-      <select class="form-contro" id="">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-      </select>  
+      <span class="input-group-addon">
+        <select class="selectpicker" id="">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>  
+      </span>
+      </div>
     </div>
     
     <div class="col-md-2 form-group">
@@ -21,12 +25,11 @@
       <%= f.select(:fish_type_id, fish_type_options(@fish_types), { include_blank: true }, class: "form-control") %>
     </div>
     <div class="col-md-2 form-group">
-      <%= f.label :image, "choose image", class: "btn btn-primary btn-align" %>
+      <%= f.label :image, "choose image", class: "btn btn-default btn-align" %>
       <%= f.file_field(:image, accept: 'image/png,image/jpeg', style: "display:none;")%>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 btn-group form-group">
+  
+    <div class="col-md-4 btn-group form-group btn-align">
       <span class="btn btn-primary cancel-form">Cancel</span>
       <%= f.submit "Upload", class: "btn btn-primary" %>
     </div>

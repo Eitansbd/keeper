@@ -1,5 +1,5 @@
 <div class="page-header fishing-trip-header">
-  <% if current_user == @fishing_trip.user %>
+  <% if current_user? @fishing_trip.user %>
     <div class="btn-group pull-right">
     <%= link_to "Edit", edit_fishing_trip_path(@fishing_trip), class: "btn btn-primary" %>
     <%= link_to "Delete", fishing_trip_path(@fishing_trip), method: :delete,
@@ -15,14 +15,26 @@
         </div>
         <div class="media-body">
           <h1 class="media-heading"><%= @fishing_trip.title %></h1>
-          <p><%= @fishing_trip.user.name %></p>
+          <p>Angler: <%= @fishing_trip.user.name %></p>
           <p>Posted <%= time_ago_in_words(@fishing_trip.created_at) %> ago.</p>
         </div>
       </div>
     </div>
   </div>
-
+  <% if current_user? @fishing_trip.user %>
+    <button type="button" id="add-fish-catch" class="btn btn-default btn-align-bottom btn-sm">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Fish
+    </button>
+  <% end %>
 </div>
+
+<% if current_user? @fishing_trip.user %>
+  <div class="row">
+    <div class="col-md-12" id="fish-catch-form" style="display: none;">
+      <%= render 'fish_catches/form' %>
+    </div>
+  </div>
+<% end %>
 
 <div class="row fishing-trip-body">
   <div class="col-md-8">
@@ -59,20 +71,6 @@
   <%= render 'fish_catches/fish_catch_carousel' %>
 <% end %>
 
-<% if @fishing_trip.user == current_user %>
-  <div class="row equal top-buffer-sm">
-    <div class="col-md-1">
-      <button type="button" id="add-fish-catch" class="btn btn-default btn-sm btn-align">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Fish
-      </button>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-md-10" id="fish-catch-form" style="display: none;">
-      <%= render 'fish_catches/form' %>
-    </div>
-  </div>
-<% end %>
+
 
 
