@@ -10,6 +10,7 @@ class FishCatch < ApplicationRecord
   }, default_url: "/images/:style/smile-emoji.png"
   
   validates_attachment_content_type :image, content_type: /\Aimage/
+  validates_attachment_presence :image
   
   validates :weight, numericality: { greater_than: 0 }
   validates :length, numericality: { greater_than: 0 }

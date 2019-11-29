@@ -2,7 +2,8 @@ class FishingTripsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :destroy]  
   
   def new
-    @fishing_trip = FishingTrip.new
+    @user = current_user
+    @fishing_trip = current_user.fishing_trips.build()
   end
   
   def create
@@ -36,6 +37,14 @@ class FishingTripsController < ApplicationController
   end
   
   def destroy
+    @fishing_trip = FishingTrip.find(params[:id])
+    
+    if @fishing_trip.destroy
+      flash[:success] = "Fishing Trip Deleted"
+      redirect_to user_path current_user
+    else
+      flash.now[:error] = "Something Went Wrong. Please Try Again Later"
+    end
   end
   
   private

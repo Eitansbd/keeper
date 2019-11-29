@@ -29,8 +29,13 @@ function updateTable(data, field) {
 
 
 $(document).ready(function(){
+  $("#new_fish_catch").bind("ajax:before", function(e) {
+    console.log(this)
+    console.log(e)
+  })
+  
   $('.carousel').carousel({
-    wrao: false
+    wrap: false
   })
   
   $("#add-fish-catch").click(function(){

@@ -5,10 +5,17 @@
       <%= f.label :weight %>
       <%= f.number_field :weight, class: "form-control" %>
     </div>
-    <div class="col-md-2 form-group">
+    <div class="col-md-3 form-group">
       <%= f.label :length %>
-      <%= f.number_field :length, class: "form-control" %>
+      <%= f.number_field :length, class: "form-control", step: "0.01" %>
+      <select class="form-contro" id="">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+      </select>  
     </div>
+    
     <div class="col-md-2 form-group">
       <%= f.label "What Species?" %>
       <%= f.select(:fish_type_id, fish_type_options(@fish_types), { include_blank: true }, class: "form-control") %>

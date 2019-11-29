@@ -1,4 +1,6 @@
 <% provide(:title, 'Fishing Trip') %>
-<% provide(:button_text, 'Add Fishing Trip') %>
 
-<%= render 'form' %>
+<div class="container top-buffer-md">
+  <%= render 'form', submit_text: "Upload Fishing Trip",
+                     cancel_link: user_path(@fishing_trip.user.id) %>
+</div>
