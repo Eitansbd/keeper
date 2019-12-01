@@ -6,7 +6,7 @@ class FishCatch < ApplicationRecord
   has_attached_file :image, styles: {
     thumbnail: '100x100>',
     square: '200x200#',
-    medium: '300x300>'
+    large: 'x480>'
   }, default_url: "/images/:style/smile-emoji.png"
   
   validates_attachment_content_type :image, content_type: /\Aimage/

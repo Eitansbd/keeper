@@ -9,7 +9,7 @@
     <div class="carousel-inner">
     <% @fishing_trip.fish_catches.each_with_index do |fish_catch, index| %>
       <div class="item <%= index == 0 ? 'active' : nil %>">
-        <%= image_tag fish_catch.image.url, class: "center-block w-100" %>
+        <%= image_tag fish_catch.image.url(:large), class: "center-block w-100" %>
         <div class="carousel-caption d-none d-md-block">
           <h5><%= fish_catch.fish_type.name %></h5>
           <p>Weight: <%= fish_catch.weight %>  |  Length: <%= fish_catch.length %></p>
