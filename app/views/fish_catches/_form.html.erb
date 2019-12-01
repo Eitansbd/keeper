@@ -2,22 +2,12 @@
   <%= f.hidden_field :fishing_trip_id, value: @fishing_trip.id %>
   <div class="row equal">
     <div class="col-md-2 form-group">
-      <%= f.label :weight %>
+      <%= f.label "Weight (lb)" %>
       <%= f.number_field :weight, class: "form-control" %>
     </div>
     <div class="col-md-2 form-group">
-      <%= f.label :length %>
-      <div class="input-group">
+      <%= f.label "Length (Inches)" %>
       <%= f.number_field :length, class: "form-control", step: "0.01" %>
-      <span class="input-group-addon">
-        <select class="selectpicker" id="">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-        </select>  
-      </span>
-      </div>
     </div>
     
     <div class="col-md-2 form-group">

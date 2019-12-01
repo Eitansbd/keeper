@@ -1,7 +1,7 @@
 class FishingTripsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :destroy]  
   def index
-    @fishing_trips = FishingTrip.take(10)
+    @fishing_trips = FishingTrip.order(created_at: :desc).limit(10)
   end
   
   def new

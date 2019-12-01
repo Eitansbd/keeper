@@ -4,9 +4,9 @@ class User < ApplicationRecord
   has_many :fishing_trips, dependent: :destroy
   has_many :fish_catches, dependent: :destroy
   has_attached_file :profile_image, styles: {
-    thumbnail: '100x100>',
-    square: '200x200#',
-    medium: '300x300>'
+    small: 'x80',
+    medium: 'x100',
+    square_md: '100x100#'
   }, default_url: "/images/:style/smile-emoji.png"
   
   validates_attachment_content_type :profile_image, content_type: /\Aimage/
