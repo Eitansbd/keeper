@@ -29,12 +29,6 @@ function updateTable(data, field) {
 document.addEventListener("turbolinks:load", function() {
 
 $(document).ready(function(){
-  
-  $("#new_fish_catch").bind("ajax:before", function(e) {
-    console.log(this)
-    console.log(e)
-  })
-  
   $('.carousel').carousel({
     wrap: false
   })
@@ -45,11 +39,17 @@ $(document).ready(function(){
   
   $(".cancel-form").click(function() {
     $("#fish-catch-form").hide();
+    $('#new_fish_catch')[0].reset();
+    $(".img-button").text("choose image")
   });
   
   $("input[type='file']").change(function(){
    $(".profile-image-upload-button").show();
    });  
+   
+  $('#fish_catch_image').change(function(){ 
+    $(".img-button").html('<span class="glyphicon glyphicon-ok"> image selected</span>')
+  });
   
   $(".top-fish").change(function() {
     var field = ($("#top-fish-sort-field").find(':selected').data('id'))

@@ -26,7 +26,8 @@ class FishCatch < ApplicationRecord
     where_options = {}
     where_options[:fish_type_id] = type if type
     where_options[:user_id] = user_id if user_id
-    FishCatch.where(where_options).order(sort => :desc).limit(limit)
+    FishCatch.where(where_options).order(sort => :desc)
+             .includes(:user, :fish_type).limit(limit)
   end
 
 end

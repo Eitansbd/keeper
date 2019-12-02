@@ -54,6 +54,10 @@ h2 {
   color: $gray-light;
 }
 
+input[type="file"] {
+  display: none;
+}
+
 .top-buffer-sm {
   margin-top: 20px;
 }
@@ -106,7 +110,7 @@ footer {
     color: #222;
     }
   }
-  small {
+  p {
     float: left;
   }
   ul {
@@ -313,10 +317,3 @@ span.picture {
   }
   
 }
-
-// /* user show */
-// input[type="file"] {
-//   color: transparent;
-//   display: inline;
-//   width: 90px;
-// }
