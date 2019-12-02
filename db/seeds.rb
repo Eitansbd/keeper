@@ -3,4 +3,7 @@ DatabaseCleaner.strategy = :truncation
 
 DatabaseCleaner.clean
 
-Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each { |seed| load seed }
+Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|
+  puts seed
+  load seed 
+end

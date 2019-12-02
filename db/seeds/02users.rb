@@ -6,11 +6,11 @@ User.create!(name: "Example User",
              
 40.times do |n|
   name = Faker::Name.name
-  domains = %w(gmail.com yahoo.com )
-  email = "#{name}@#{domains.sample}"
-  password = "pass"
-  User.create!(name: name, 
+  email = Faker::Internet.email
+  password = "fakepassword"
+  user = User.new(name: name, 
                email: email,
                password: password, 
                password_confirmation: password)
+  user.profile_image = 
 end

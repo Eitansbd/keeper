@@ -7,7 +7,7 @@ class FishingTrip < ApplicationRecord
                         
   validate :end_after_start
 
-  scope :recent, -> { includes(:user).order(created_at: :desc).limit(5) }
+  scope :recent, -> { includes(:user, :fish_catches).order(created_at: :desc).limit(5) }
   
   def end_after_start
     if start_time && end_time && start_time >= end_time

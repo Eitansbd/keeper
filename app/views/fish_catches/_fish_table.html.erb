@@ -26,7 +26,7 @@
   <tbody class="top-fish-body">
     <% @top_fish.each_with_index do |fish, index| %>
       <tr id="fish-<%= index + 1 %>">
-        <th scope="row"><%= link_to "##{index + 1}", fishing_trip_url(fish.fishing_trip)%></th>
+        <th scope="row"><%= link_to "##{index + 1}", "nada" %></th>
         <td><%= fish.weight %></td>
         <td><%= fish.fish_type.name %></td>
         <td><%= link_to fish.user.name, fish.user %></td>
