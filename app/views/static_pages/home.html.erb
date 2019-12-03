@@ -1,12 +1,11 @@
 <% provide(:title, "Home") %>
 
   <div class="row">
-    <div class="col-md-6">
-      <h1>Recent Trips</h1>
-      
+    <div class="col-md-6 recent-trips">
+      <h1 class="heading">The Fishing Report...</h1>
         <%= render @fishing_trips %>
     </div>
-     <div class="col-md-5 col-md-offset-1">
+    <div class="col-md-5 col-md-offset-1">
       <%= render 'fish_catches/fish_table' %>
     </div>
   </div>

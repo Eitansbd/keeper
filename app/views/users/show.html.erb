@@ -4,10 +4,25 @@
   <aside class="col-md-5">
     <div row>
       <section class="user_info">
-        <h1>
-          <%= @user.name %>
-        </h1>
-        <%= image_tag @user.profile_image.url(:square_md), id: "profile-picture" %>
+        <div class="media">
+          <div class="media-left media-middle">
+            <%= image_tag @user.profile_image.url(:square_md), id: "profile-picture", class: "media-object" %>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= @user.name %></h4>
+            <p class="member-since">Member since: <%= date_format(@user.created_at) %></p>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <span class="badge"><%= @user.fishing_trips.count %></span>
+                Fishing Trips
+              </li>
+              <li class="list-group-item">
+                <span class="badge"><%= @user.fish_catches.count %></span>
+                Fish Caught
+              </li>
+            </ul>
+          </div>
+        </div>
       </section>
       <% if @user == current_user %>
         <%= form_for @user, url: users_profile_image_path(@user.id), remote: true, authenticity_token: true, html: {id: "edit_profile_image" } do |f| %>

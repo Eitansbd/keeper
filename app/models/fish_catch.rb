@@ -7,7 +7,7 @@ class FishCatch < ApplicationRecord
     square_sm: '100x100#',
     square_md: '200x200#',
     large: 'x480'
-  }, default_url: "/images/:style/smile-emoji.png"
+  }, default_url: "/images/fish_defaults/:style/fish.png"
   
   validates_attachment_content_type :image, content_type: /\Aimage/
   validates_attachment_presence :image

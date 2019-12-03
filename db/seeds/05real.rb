@@ -8,9 +8,9 @@ weather = "Mostly sunny with some clouds. Winds were at 5KT from the SW"
 
 fishing_trip = user.fishing_trips.create!(content: content,
                                           weather: weather,
-                                          title: "Sample Title", 
-                                          body_of_water: "LIS", 
-                                          location: "Little Neck", 
+                                          title: "Western Sound", 
+                                          body_of_water: "Long Island Sound", 
+                                          location: "Hempstead Harbor", 
                                           start_time: 0.day.ago,
                                           end_time: 0.day.ago,
                                           date: 0.day.ago)
