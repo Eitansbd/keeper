@@ -33,7 +33,7 @@ users.each do |user|
     body_of_water = where.first
     location = where.last.sample
     title = titles.sample
-    random_num = rand(24)
+    random_num = rand(2..24)
     start_time = random_num.hours.ago
     end_time = rand(1...random_num).hours.ago
     user.fishing_trips.create!(content: content,
