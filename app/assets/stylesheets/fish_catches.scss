@@ -15,3 +15,19 @@
     font-size: 24px;
   }
 }
+
+#fish_catch_carousel {
+  margin-top: 50px;
+  .fish-catch-details {
+    position: absolute;
+    bottom: 0px;
+    padding-bottom: 0px;
+    p {
+      display: inline;
+      background-color: white;
+      margin: 0px;
+      font-size: 24px;
+      color: black;
+    }
+  }
+}
