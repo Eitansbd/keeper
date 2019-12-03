@@ -27,19 +27,22 @@ titles = ["Great Day Fishing", "Awesome Afternoon Bite", "Red Hot Fishing",
 
 users.each do |user|
   30.times do |num|
-    weather = "#{weather_hsh[:overview].sample}. Winds were #{weather_hsh[:wind_speed].sample} from the #{weather_hsh[:wind_dir].sample}"
+    weather = "#{weather_hsh[:overview].sample}. Winds were #{weather_hsh[:wind_speed].sample} kt from the #{weather_hsh[:wind_dir].sample}"
     content = contents.sample
     where = bodies_and_locations.sample
     body_of_water = where.first
     location = where.last.sample
     title = titles.sample
+    random_num = rand(24)
+    start_time = random_num.hours.ago
+    end_time = rand(1...random_num).hours.ago
     user.fishing_trips.create!(content: content,
                                weather: weather,
-                               title: "Sample Title", 
-                               body_of_water: "LIS", 
-                               location: "Little Neck", 
-                               start_time: 2.day.ago,
-                               end_time: 1.day.ago,
+                               title: title,
+                               body_of_water: body_of_water,
+                               location: location,
+                               start_time: start_time,
+                               end_time: end_time,
                                date: num.day.ago,
                                created_at: num.day.ago)
   end
