@@ -34,8 +34,8 @@ users.each do |user|
     location = where.last.sample
     title = titles.sample
     random_num = rand(2..24)
-    start_time = random_num.hours.ago
-    end_time = rand(1...random_num).hours.ago
+    end_time = random_num.hours.ago
+    start_time = (rand(1..6) + random_num).hours.ago
     user.fishing_trips.create!(content: content,
                                weather: weather,
                                title: title,
