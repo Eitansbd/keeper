@@ -4,13 +4,4 @@ class StaticPagesController < ApplicationController
     
     @top_fish = FishCatch.find_top_fish(:weight, 10)
   end
-
-  def help
-  end
-  
-  def about
-  end
-  
-  def contact
-  end
 end

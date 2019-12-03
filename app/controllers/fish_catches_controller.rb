@@ -6,7 +6,11 @@ class FishCatchesController < ApplicationController
       if @fish_catch.save
         format.js 
       else
-      
+        errors = @fish_catch.errors.map do |field, message|
+          field = :fish_type_id if field == :fish_type 
+          {field: field, message: message}
+        end
+        format.json { render json: { errors: errors }, status: :unprocessable_entity }
       end
     end
   end
@@ -19,8 +23,8 @@ class FishCatchesController < ApplicationController
     respond_to do |format|
       format.js
       format.html do
-          flash[:success] = "You deleted the fish"
-         redirect_to fishing_trip_path(fishing_trip)
+        flash[:success] = "You deleted the fish"
+        redirect_to fishing_trip_path(fishing_trip)
       end
     end
   end

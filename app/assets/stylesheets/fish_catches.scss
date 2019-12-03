@@ -1,3 +1,17 @@
-// Place all the styles related to the FishCatches controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* top fish table */
+.top-fish {
+  text-align: center;
+  .btn {
+    padding: 0px;
+    font-weight: bold;
+  }
+  th {
+    text-align: center;
+  }
+  td {
+    font-size: 14px;
+  }
+  .title {
+    font-size: 24px;
+  }
+}

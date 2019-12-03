@@ -1,3 +1,25 @@
-// Place all the styles related to the FishingTrips controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$gray-medium-light: #eaeaea;
+.fishing-trips {
+  list-style: none;
+  padding: 0;
+  
+  li {
+    padding-top: 10px;
+    border-top: 1px solid #e8e8e8;
+  }
+  p {
+    margin-bottom: 5px;
+  }
+  img {
+      display: block;
+      width: 80px;
+      margin-right: 10px;
+    }
+  .trip-details {
+    margin-left: 10px;
+  }
+  
+  .media {
+    margin-top: 0px;
+  }
+}

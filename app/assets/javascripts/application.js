@@ -21,9 +21,17 @@
 function updateTable(data, field) {
    $(".top-fish-body").empty();
    $.each(data.fish, function(index, fish) {
-            $(".top-fish-body").append("<tr id='fish-" + (index + 1) + "'><th>" + (index + 1) + "</th><td>" + (field == "length" ? fish.length : fish.weight) + "</td><td>" + fish.species.name + "</td><td><a href=" + fish.angler.url + ">" + fish.angler.name + "</td></tr>")
+            $(".top-fish-body").append("<tr id='fish-" + (index + 1) + "'><th>" + (index + 1) + "</th><td>" + (field == "length" ? (fish.length + " in") : (fish.weight + " lbs")) + "</td><td>" + fish.species.name + "</td><td><a href=" + fish.angler.url + ">" + fish.angler.name + "</td></tr>")
   });
 }
+
+function clearErrorMessages(){
+  $('.error-field').replaceWith(function() {
+      return $('input, select', this);
+    });
+  $(".error-message").remove();
+}
+
 
 
 document.addEventListener("turbolinks:load", function() {
@@ -32,24 +40,6 @@ $(document).ready(function(){
   $('.carousel').carousel({
     wrap: false
   })
-  
-  $("#add-fish-catch").click(function(){
-    $("#fish-catch-form").show();
-  });
-  
-  $(".cancel-form").click(function() {
-    $("#fish-catch-form").hide();
-    $('#new_fish_catch')[0].reset();
-    $(".img-button").text("choose image")
-  });
-  
-  $("input[type='file']").change(function(){
-   $(".profile-image-upload-button").show();
-   });  
-   
-  $('#fish_catch_image').change(function(){ 
-    $(".img-button").html('<span class="glyphicon glyphicon-ok"> image selected</span>')
-  });
   
   $(".top-fish").change(function() {
     var field = ($("#top-fish-sort-field").find(':selected').data('id'))
@@ -73,6 +63,35 @@ $(document).ready(function(){
     });
   });
   
+  $("#add-fish-catch").click(function(){
+    $("#fish-catch-form").show();
+  });
+  
+  $(".cancel-form").click(function() {
+    $("#fish-catch-form").hide();
+    $('#new_fish_catch')[0].reset();
+    clearErrorMessages()
+    $(".img-button").text("choose image")
+  });
+  
+  $("input[type='file']").change(function(){
+   $(".profile-image-upload-button").show();
+   });  
+   
+  $('#fish_catch_image').change(function(){ 
+    $(".img-button").html('<span class="glyphicon glyphicon-ok"> image selected</span>')
+  });
+  
+  $("#new_fish_catch").on("ajax:error", function(event, response) {
+    $.each(response.responseJSON.errors, function(index, error){
+      $("#fish_catch_" + error.field).wrap("<div class=\"error-field\"></div>")
+      $("#fish_catch_" + error.field).after("<small class=\"error-message\">" + error.message + "</small>")
+    })
+  });
+  
+  $("#new_fish_catch").on("ajax:before", function(event, response) {
+    clearErrorMessages()
+  });
 });
 
 })

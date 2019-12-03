@@ -81,6 +81,7 @@ input[type="file"] {
 .bottom-buffer-lg {
   margin-bottom: 80px;
 }
+
 /* header */
 
 #logo {
@@ -168,8 +169,6 @@ input {
   margin-top: 24px
 }
 
-
-
 .checkbox {
   margin-top: -10px;
   margin-bottom: 10px;
@@ -184,6 +183,19 @@ input {
   margin-left: 0;
 }
 
+.error-field {
+  input, textarea, select {
+    border: 1px solid #ef1b1b;
+  }
+  .error-message {
+    color: #ef1b1b
+  }
+}
+
+.text-area-fix {
+  height: 100%;
+}
+
 /* Users index */
 .users {
   list-style: none;
@@ -196,37 +208,6 @@ input {
 }
 
 /* fishing trips */
-
-.fishing-trips{
-  list-style: none;
-  padding: 0;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
-  img {
-      display: block;
-      width: 80px;
-      margin-right: 10px;
-    }
-  .trip-details {
-    margin-left: 10px;
-  }
-  .user {
-    margin-top: 5em;
-    padding-top: 0;
-  }
-  .content {
-    display: block;
-  }
-  .timestamp {
-    color: $gray-light;
-    display: block;
-  }
-  .media {
-    margin-top: 0px;
-  }
-}
 
 .fishing-trip-header {
   position: relative;
@@ -288,9 +269,6 @@ span.picture {
   }
 }
 
-.top-fish td {
-  font-size: 12px;
-}
 
 .fish-catch-container {
   margin-top: 20px;
@@ -302,18 +280,3 @@ span.picture {
   }
 }
 
-/* top fish table */
-.top-fish {
-  text-align: center;
-  .btn {
-    padding: 0px;
-    font-weight: bold;
-  }
-  th {
-    text-align: center;
-  }
-  td {
-    font-size: 14px;
-  }
-  
-}
