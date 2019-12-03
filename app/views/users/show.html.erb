@@ -22,18 +22,17 @@
     </div>
   </aside>
   <div class="col-md-5 col-md-offset-1">
-    <% if @user.fishing_trips.any? %>
       <div>
-        <% if current_user?(@user) %>
-          
-        <% end %>
         <h3>
+        <% if current_user?(@user) %>
           <%= link_to new_fishing_trip_url, class: "btn btn-default" do %>
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
           <% end %>
+        <% end %>
           Fishing Trips
         </h3>  
       </div>
+    <% if @user.fishing_trips.any? %>
       <ol class="fishing-trips">
         <%= render @fishing_trips %>
       </ol>
