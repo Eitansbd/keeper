@@ -12,5 +12,4 @@ User.create!(name: "Example User",
                email: email,
                password: password, 
                password_confirmation: password)
-  user.profile_image = 
 end
