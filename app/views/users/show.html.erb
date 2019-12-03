@@ -7,13 +7,13 @@
         <h1>
           <%= @user.name %>
         </h1>
-        <%= image_tag @user.profile_image.url(:square_md) %>
+        <%= image_tag @user.profile_image.url(:square_md), id: "profile-picture" %>
       </section>
       <% if @user == current_user %>
-        <%= form_for @user, url: users_profile_image_path(@user.id), remote: true, authenticity_token: true do |f| %>
+        <%= form_for @user, url: users_profile_image_path(@user.id), remote: true, authenticity_token: true, html: {id: "edit_profile_image" } do |f| %>
             <%= f.label :profile_image, "choose image", class: "btn btn-default btn-align img-button" %>
             <%= f.file_field :profile_image, accept: 'image/png,image/jpeg' %>
-            <%= f.submit "upload", class: "btn btn-default profile-image-upload-button", style: "display: none;" %>
+            <%= f.submit "upload", class: "btn btn-default btn-align profile-image-upload-button", style: "display: none;" %>
         <% end %>
       <% end %>
     </div>
@@ -22,12 +22,17 @@
     </div>
   </aside>
   <div class="col-md-5 col-md-offset-1">
-    <% if current_user?(@user) %>
-      <%= link_to "new", new_fishing_trip_url, class: "btn btn-default pull-right" %>
-    <% end %>
     <% if @user.fishing_trips.any? %>
       <div>
-        <h3>Fishing Trips</h3>  
+        <% if current_user?(@user) %>
+          
+        <% end %>
+        <h3>
+          <%= link_to new_fishing_trip_url, class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          <% end %>
+          Fishing Trips
+        </h3>  
       </div>
       <ol class="fishing-trips">
         <%= render @fishing_trips %>

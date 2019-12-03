@@ -51,9 +51,14 @@ class UsersController < ApplicationController
   def create_image
     @user = User.find(params[:id])
     if @user.update_attributes(params.require(:user).permit(:profile_image))
-      render 'create_image.json', status: :created
+      respond_to do |format|
+        format.html do
+          redirect_to user_path @user
+        end
+        format.json { render json: { url: @user.profile_image.url }, status: :ok }
+      end
     else
-      render 'create_image.json', status: :error
+    
     end
   end
   

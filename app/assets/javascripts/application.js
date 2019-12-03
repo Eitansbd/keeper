@@ -74,12 +74,13 @@ $(document).ready(function(){
     $(".img-button").text("choose image")
   });
   
-  $("input[type='file']").change(function(){
-   $(".profile-image-upload-button").show();
+  $("#user_profile_image").change(function(){
+    $(".img-button").html('<span class="glyphicon glyphicon-ok"></span> image selected')
+    $(".profile-image-upload-button").show();
    });  
    
   $('#fish_catch_image').change(function(){ 
-    $(".img-button").html('<span class="glyphicon glyphicon-ok"> image selected</span>')
+    $(".img-button").html('<span class="glyphicon glyphicon-ok"></span> image selected')
   });
   
   $("#new_fish_catch").on("ajax:error", function(event, response) {
@@ -92,6 +93,12 @@ $(document).ready(function(){
   $("#new_fish_catch").on("ajax:before", function(event, response) {
     clearErrorMessages()
   });
+  
+  $("#new_profile_image").on("ajax:success", function(event, response) {
+    $("#profile-picture").replaceWith(this)
+    alert("its working")
+  });
+  
 });
 
 })
