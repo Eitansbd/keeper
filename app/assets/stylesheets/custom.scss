@@ -12,7 +12,6 @@ $gray-medium-light: #eaeaea;
 
 /* universal */
 
-
 section {
   overflow: auto;
 }
@@ -82,51 +81,7 @@ input[type="file"] {
   margin-bottom: 80px;
 }
 
-/* header */
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  &:hover {
-  color: #fff;
-  text-decoration: none;
-  }
-}
-
-/* footer */
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: $gray-light;
-  a {
-    color: #555;
-    &:hover {
-    color: #222;
-    }
-  }
-  p {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
-  }
-}
-
-.debug_dump {
-  @include box_sizing;
-}
 
 /* sidebar */
 aside {
@@ -188,14 +143,7 @@ input {
     text-align: center;
 }
 
-.error-field {
-  input, textarea, select, label {
-    border: 1px solid #ef1b1b;
-  }
-  .error-message {
-    color: #ef1b1b
-  }
-}
+
 
 .text-area-fix {
   height: 100%;

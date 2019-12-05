@@ -1,0 +1,8 @@
+.error-field {
+  input, textarea, select, label {
+    border: 1px solid #ef1b1b;
+  }
+  .error-message {
+    color: #ef1b1b
+  }
+}
