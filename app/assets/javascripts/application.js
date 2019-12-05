@@ -99,7 +99,7 @@ $(document).ready(function(){
   $("#new_profile_image").on("ajax:success", function(event, response) {
     $("#profile-picture").replaceWith(this)
   });
-  
+
 });
 
 })

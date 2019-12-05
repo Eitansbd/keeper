@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome to the Keeper!"
       redirect_to @user
     else
       render 'new'
@@ -55,12 +55,18 @@ class UsersController < ApplicationController
     if @user.update_attributes(params.require(:user).permit(:profile_image))
       respond_to do |format|
         format.html do
+          flash[:success] = "You updated your profile picture"
           redirect_to user_path @user
         end
         format.json { render json: { url: @user.profile_image.url }, status: :ok }
       end
     else
-    
+      respond_to do |format|
+        format.html do 
+          flash.now = "Could not update picture. Please try again later"
+        end
+        format.json { render json: { error: "Could not update picture. Please try again later", status: 422 }}
+      end
     end
   end
   

@@ -12,7 +12,7 @@ class FishCatchesController < ApplicationController
         end
         format.js 
       else
-        format.json {render 'create_error.json', status: :unprocessable_entity}
+        format.json {render 'create_error.json', status: 422}
       end
     end
   end
@@ -20,13 +20,16 @@ class FishCatchesController < ApplicationController
   def destroy
     @fish_catch = FishCatch.find(params[:id])
     fishing_trip = @fish_catch.fishing_trip.id
-    @fish_catch.destroy
     
     respond_to do |format|
-      format.js
-      format.html do
-        flash[:success] = "You deleted the fish"
-        redirect_to fishing_trip_path(fishing_trip)
+      if @fish_catch.destroy
+        format.js
+        format.html do
+          flash[:success] = "You deleted the fish"
+          redirect_to fishing_trip_path(fishing_trip)
+        end
+      else
+        format.json format.json { render json: { error: "Could not update picture. Please try again later", status: 422 } } 
       end
     end
   end
