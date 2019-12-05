@@ -14,7 +14,7 @@ gem 'turbolinks', '5.0.0'
 
 gem 'jbuilder', '2.4.1'
 
-gem 'bootstrap-sass', '3.3.6'
+gem 'bootstrap-sass', '3.4.1'
 gem 'popper_js', '~> 1.11', '>= 1.11.1'
 gem 'toastr-rails'
 
