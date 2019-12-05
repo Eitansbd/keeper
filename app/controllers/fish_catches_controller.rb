@@ -1,16 +1,18 @@
 class FishCatchesController < ApplicationController
+  before_action :correct_user, only: [:create, :destroy]
+  
   def create
     @fish_catch = current_user.fish_catches.build(fish_catch_params)
     @fishing_trip = @fish_catch.fishing_trip
     respond_to do |format|
       if @fish_catch.save
+        format.html do
+          flash[:success] = "Nice Catch!"
+          redirect_to fishing_trip_path(@fishing_trip)
+        end
         format.js 
       else
-        errors = @fish_catch.errors.map do |field, message|
-          field = :fish_type_id if field == :fish_type 
-          {field: field, message: message}
-        end
-        format.json { render json: { errors: errors }, status: :unprocessable_entity }
+        format.json {render 'create_error.json', status: :unprocessable_entity}
       end
     end
   end
@@ -43,6 +45,11 @@ class FishCatchesController < ApplicationController
   end
   
   private
+    def correct_user
+      user = FishCatch.find(params[:id]).user
+      redirect_to root_url, status: 403 unless current_user?(user)
+    end
+    
     def set_query_params
       @sort_field = params[:sortBy] || "weight"
       @limit = params[:limit] ? params[:limit].to_i : 10
@@ -64,10 +71,6 @@ class FishCatchesController < ApplicationController
       params.require(:fish_catch).permit(:length, :weight, :fish_type_id, 
                                          :image, :fishing_trip_id)
 
-    end
-    
-    def fishing_trip_params
-      params.require(:fishing_trip_id)
     end
     
     def json_response(object, status = :ok)

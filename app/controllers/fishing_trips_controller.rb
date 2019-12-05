@@ -1,5 +1,6 @@
 class FishingTripsController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create, :destroy]  
+  before_action :correct_user, only: [:edit, :update, :create, :destroy]
+  
   def index
     @fishing_trips = FishingTrip.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
@@ -56,5 +57,10 @@ class FishingTripsController < ApplicationController
       params.require(:fishing_trip).permit(:title, :content, :weather, 
                                            :body_of_water, :location, :date,
                                            :start_time, :end_time)
+    end
+    
+    def correct_user
+      user = FishingTrip.find(params[:id]).user
+      redirect_to root_url, status: 403 unless current_user?(user)
     end
 end
