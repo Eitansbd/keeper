@@ -1,5 +1,6 @@
 class FishingTripsController < ApplicationController
-  before_action :correct_user, only: [:edit, :update, :create, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :logged_in_user, only: [:new, :create]
   
   def index
     @fishing_trips = FishingTrip.order(created_at: :desc).paginate(page: params[:page], per_page: 10)

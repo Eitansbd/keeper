@@ -50,6 +50,7 @@ class FishCatchesController < ApplicationController
   private
     def correct_user
       user = FishCatch.find(params[:id]).user
+      
       redirect_to root_url, status: 403 unless current_user?(user)
     end
     
