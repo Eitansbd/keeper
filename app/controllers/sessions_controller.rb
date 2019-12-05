@@ -15,6 +15,14 @@ class SessionsController < ApplicationController
     end
   end
   
+  def demo_login
+    user = User.find_by(name: "Example User")
+    log_in(user)
+    flash[:success] = "You were logged in as 'Example User' for a demo." +
+    "In the navigation click Account > Profile to visit your personal page. Enjoy!"
+    redirect_to root_url
+  end
+  
   def delete
     log_out if logged_in?
     redirect_to root_url

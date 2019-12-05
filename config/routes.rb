@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#delete'
+  post '/demo_login', to: 'sessions#demo_login'
   
   resources :users
   patch '/users/:id/profile_image', to: "users#create_image", as: "users_profile_image"
