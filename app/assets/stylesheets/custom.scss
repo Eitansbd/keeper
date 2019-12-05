@@ -183,8 +183,13 @@ input {
   margin-left: 0;
 }
 
+#fish_catch_image_upload {
+    font-weight: normal;
+    text-align: center;
+}
+
 .error-field {
-  input, textarea, select {
+  input, textarea, select, label {
     border: 1px solid #ef1b1b;
   }
   .error-message {

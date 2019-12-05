@@ -15,7 +15,7 @@
       <%= f.select(:fish_type_id, fish_type_options(@fish_types), { include_blank: true }, class: "form-control") %>
     </div>
     <div class="col-md-2 form-group">
-      <%= f.label :image, "choose image", class: "btn btn-default btn-align img-button" %>
+      <%= f.label :image, "choose image", class: "form-control btn-default btn-align img-button", id: "fish_catch_image_upload" %>
       <%= f.file_field(:image, accept: 'image/png,image/jpeg', class: "img-input") %>
     </div>
   

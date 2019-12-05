@@ -25,11 +25,10 @@ function updateTable(data, field) {
   });
 }
 
-function clearErrorMessages(){
+function clearErrors(){
   $('.error-field').replaceWith(function() {
-      return $('input, select', this);
+      return $('input, select, label', this);
     });
-  $(".error-message").remove();
 }
 
 
@@ -70,7 +69,7 @@ $(document).ready(function(){
   $(".cancel-form").click(function() {
     $("#fish-catch-form").hide();
     $('#new_fish_catch')[0].reset();
-    clearErrorMessages()
+    clearErrors()
     $(".img-button").text("choose image")
   });
   
@@ -83,20 +82,22 @@ $(document).ready(function(){
     $(".img-button").html('<span class="glyphicon glyphicon-ok"></span> image selected')
   });
   
-  $("#new_fish_catch").on("ajax:error", function(event, response) {
-    $.each(response.responseJSON.errors, function(index, error){
-      $("#fish_catch_" + error.field).wrap("<div class=\"error-field\"></div>")
-      $("#fish_catch_" + error.field).after("<small class=\"error-message\">" + error.message + "</small>")
-    })
+  $("#new_fish_catch").on("ajax:error", function(e, response) {
+    clearErrors();
+    $.each(response.responseJSON.errors, function(field, error_arr) {
+      $("#fish_catch_" + field).wrap("<div class=\"error-field\"></div>")
+      $.each(error_arr, function(index, error_message) {
+        $("#fish_catch_" + field).after("<small class=\"error-message\">" + error_message + "</small>")
+      });
+    });
   });
   
   $("#new_fish_catch").on("ajax:before", function(event, response) {
-    clearErrorMessages()
+    
   });
   
   $("#new_profile_image").on("ajax:success", function(event, response) {
     $("#profile-picture").replaceWith(this)
-    alert("its working")
   });
   
 });
