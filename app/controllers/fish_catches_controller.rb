@@ -6,11 +6,7 @@ class FishCatchesController < ApplicationController
     @fishing_trip = @fish_catch.fishing_trip
     respond_to do |format|
       if @fish_catch.save
-        format.html do
-          flash[:success] = "Nice Catch!"
-          redirect_to fishing_trip_path(@fishing_trip)
-        end
-        format.js 
+        format.js
       else
         format.json {render 'create_error.json', status: 422}
       end
@@ -29,7 +25,7 @@ class FishCatchesController < ApplicationController
           redirect_to fishing_trip_path(fishing_trip)
         end
       else
-        format.json format.json { render json: { error: "Could not update picture. Please try again later", status: 422 } } 
+        format.json { render json: { toastr: {type: "error", message: "Could not update picture. Please try again later"}, status: 422 } } 
       end
     end
   end
@@ -49,8 +45,8 @@ class FishCatchesController < ApplicationController
   
   private
     def correct_user
-      user = FishCatch.find(params[:id]).user
-      
+      fishing_trip = FishingTrip.find(params[:fish_catch][:fishing_trip_id])
+      user = fishing_trip.user
       redirect_to root_url, status: 403 unless current_user?(user)
     end
     

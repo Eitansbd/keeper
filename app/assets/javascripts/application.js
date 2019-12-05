@@ -15,8 +15,10 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+//= require toastr
 //= require_tree .
 //= require jquery.remotipart
+
 
 function updateTable(data, field) {
    $(".top-fish-body").empty();
@@ -36,6 +38,7 @@ function clearErrors(){
 document.addEventListener("turbolinks:load", function() {
 
 $(document).ready(function(){
+  
   $('.carousel').carousel({
     wrap: false
   })
@@ -92,12 +95,9 @@ $(document).ready(function(){
     });
   });
   
-  $("#new_fish_catch").on("ajax:before", function(event, response) {
-    
-  });
-  
-  $("#new_profile_image").on("ajax:success", function(event, response) {
+  $("#new_profile_image").on("ajax:success", function() {
     $("#profile-picture").replaceWith(this)
+    toastr.success('You updated your profile picture')
   });
 
 });

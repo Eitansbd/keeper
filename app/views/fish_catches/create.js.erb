@@ -1,4 +1,4 @@
-
+toastr.success('Nice Catch!')
 
 <% if @fishing_trip.fish_catches.count == 1 %>
   $('.fishing-trip-body').after("<%= j render(partial: 'fish_catches/fish_catch_carousel') %>");
